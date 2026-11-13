@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Your Dreams</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #071018;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 28px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+}
+
+.logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.logo span {
+  color: #f1ad77;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.hero {
+  height: 100vh;
+  min-height: 650px;
+  position: relative;
+  overflow: hidden;
+  background: url("Assets/8.png") center/cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15),
+    transparent 45%,
+    rgba(0,0,0,.5)
+  );
+  pointer-events: none;
+}
+
+.hero img,
+.journey img {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero .mountain1 {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.hero .mountain2 {
+  width: 75%;
+  bottom: -3%;
+  left: -5%;
+  z-index: 2;
+}
+
+.hero .mountain3 {
+  width: 70%;
+  bottom: -3%;
+  right: -5%;
+  z-index: 3;
+}
+
+.hero .car {
+  width: 65%;
+  max-width: 850px;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.hero-content {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  padding: 0 15px;
+}
+
+.eyebrow {
+  color: #f1b47e;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+h1, h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-size: clamp(65px, 11vw, 145px);
+  line-height: .9;
+}
+
+.hero h1 span {
+  color: #f1b47e;
+}
+
+.subtitle {
+  margin-top: 25px;
+  color: #ddd;
+  font-size: 15px;
+}
+
+.scroll {
+  display: inline-block;
+  margin-top: 35px;
+  color: white;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-decoration: none;
+}
+
+.journey {
+  height: 100vh;
+  min-height: 650px;
+  position: relative;
+  overflow: hidden;
+  background: url("Assets/5.png") center/cover no-repeat;
+}
+
+.journey::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.55),
+    transparent
+  );
+  z-index: 5;
+}
+
+.journey .mountain1 {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.journey .mountain2 {
+  width: 65%;
+  left: -3%;
+  bottom: 0;
+  z-index: 2;
+}
+
+.journey .mountain3 {
+  width: 65%;
+  right: -3%;
+  bottom: 0;
+  z-index: 3;
+}
+
+.journey .car {
+  width: 70%;
+  max-width: 900px;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.journey-content {
+  position: absolute;
+  top: 23%;
+  left: 10%;
+  z-index: 10;
+  max-width: 470px;
+}
+
+.journey h2 {
+  font-size: clamp(55px, 8vw, 95px);
+  line-height: .95;
+}
+
+.journey h2 span {
+  color: #f1b47e;
+}
+
+.journey-content p {
+  color: #ddd;
+  line-height: 1.8;
+  margin: 25px 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  transition: .3s;
+}
+
+.button:hover {
+  background: white;
+  color: #071018;
+}
+
+.closing {
+  min-height: 70vh;
+  padding: 100px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse, #203746, #071018);
+}
+
+.closing h2 {
+  font-size: clamp(60px, 10vw, 115px);
+  line-height: .95;
+}
+
+.closing h2 span {
+  color: #f1b47e;
+}
+
+footer {
+  padding: 25px 6%;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: #050c12;
+}
+
+@media(max-width: 700px) {
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero .mountain1 {
+    width: 145%;
+    left: -22%;
+  }
+
+  .hero .mountain2 {
+    width: 105%;
+    left: -30%;
+  }
+
+  .hero .mountain3 {
+    width: 100%;
+    right: -38%;
+  }
+
+  .hero .car {
+    width: 110%;
+    bottom: 8%;
+  }
+
+  .hero-content {
+    top: 24%;
+  }
+
+  .journey-content {
+    top: 15%;
+    left: 7%;
+    right: 7%;
+  }
+
+  .journey .car {
+    width: 130%;
+    bottom: 3%;
+  }
+
+  .journey .mountain2,
+  .journey .mountain3 {
+    width: 110%;
+  }
+
+  footer {
+    gap: 15px;
+    font-size: 8px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LYD<span>.</span></div>
+  <a href="#journey">EXPLORE ↘</a>
+</header>
+
+<section class="hero">
+
+  <img class="mountain1" src="Assets/11.png" alt="">
+  <img class="mountain2" src="Assets/9.png" alt="">
+  <img class="mountain3" src="Assets/10.png" alt="">
+  <img class="car" src="Assets/3.png" alt="">
+
+  <div class="hero-content">
+    <p class="eyebrow">THE WORLD IS YOURS TO EXPLORE</p>
+
+    <h1>
+      LIVE YOUR<br>
+      <span>DREAMS</span>
+    </h1>
+
+    <p class="subtitle">
+      The best views come after the bravest journeys.
+    </p>
+
+    <a href="#journey" class="scroll">
+      ↓ &nbsp; SCROLL TO DISCOVER
+    </a>
+  </div>
+
+</section>
+
+<section class="journey" id="journey">
+
+  <img class="mountain1" src="Assets/4.png" alt="">
+  <img class="mountain2" src="Assets/6.png" alt="">
+  <img class="mountain3" src="Assets/7.png" alt="">
+  <img class="car" src="Assets/2.png" alt="">
+
+  <div class="journey-content">
+
+    <p class="eyebrow">TAKE THE ROAD LESS TRAVELLED</p>
+
+    <h2>
+      YOUR NEXT<br>
+      CHAPTER<br>
+      <span>AWAITS.</span>
+    </h2>
+
+    <p>
+      Dream big. Take the first step.
+      Let the journey change you.
+    </p>
+
+    <a href="#closing" class="button">
+      KEEP GOING ↗
+    </a>
+
+  </div>
+
+</section>
+
+<section class="closing" id="closing">
+
+  <p class="eyebrow">A REMINDER TO YOUR FUTURE SELF</p>
+
+  <h2>
+    DON'T JUST<br>
+    <span>IMAGINE IT.</span><br>
+    LIVE IT.
+  </h2>
+
+  <a href="#" class="button" style="margin-top:35px">
+    BACK TO TOP ↑
+  </a>
+
+</section>
+
+<footer>
+  <span>LIVE YOUR DREAMS</span>
+  <span>MADE FOR THE ADVENTURE IN YOU</span>
+</footer>
+
+<script>
+const layers = document.querySelectorAll(
+  ".hero img, .journey img"
+);
+
+if (!window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches) {
+
+  window.addEventListener("scroll", () => {
+
+    const scrollY = window.scrollY;
+
+    layers.forEach((layer, index) => {
+
+      const speed = 0.015 + (index % 4) * 0.012;
+
+      layer.style.translate =
+        `0 ${scrollY * speed}px`;
+
+    });
+
+  }, { passive: true });
+
+}
+</script>
+
+</body>
+</html>
